@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .underline-custom {
+    @apply block relative;
+  }
+
+  .underline-custom::after {
+    content: "";
+    @apply absolute bottom-0 left-1/4 w-1/2 h-1 bg-sky-600 opacity-0;
+    transition: opacity 300ms, transform 300ms;
+  }
+
+  .underline-custom:hover::after,
+  .underline-custom:focus::after {
+    opacity: 1;
+    transform: translate3d(0, 0.2em, 0)
+  }
+
+  .underline-custom::after {
+    transform: scale(0);
+    transform-origin: center;
+  }
+
+  .underline-custom:hover::after,
+  .underline-custom:focus::after {
+    transform: scale(1);
+  }
+}
